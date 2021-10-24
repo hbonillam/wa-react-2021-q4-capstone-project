@@ -12,9 +12,11 @@ class App extends React.Component {
   }
   goToProductList() {
     this.setState({ navigationIndex: 1 });
+    window.scrollTo(0, 0);
   }
   goToHomePage() {
     this.setState({ navigationIndex: 0 });
+    window.scrollTo(0, 0);
   }
   render() {
     return (

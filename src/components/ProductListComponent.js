@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import SideBarComponent from "./SideBarComponent";
 import { FeaturedProducts } from "../mock/en-us/featured-products";
 import GridComponent from "./GridComponent";
+import GridPagination from "./GridPagination";
+import loadingCircular from "../assets/images/loading-circular.gif";
 
 class ProducListComponent extends React.Component {
   constructor(props) {
@@ -12,7 +14,13 @@ class ProducListComponent extends React.Component {
         (result) => result.data
       ),
       numberofPages: 5,
+      loaded: false,
     };
+  }
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ loaded: true });
+    }, 2000);
   }
 
   setCategories = (categories) => {
@@ -21,14 +29,12 @@ class ProducListComponent extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     if (this.state.categories !== prevState.categories) {
       if (this.state.categories.size === 0) {
-        console.log("no filter");
         this.setState({
           featuredProductsImg: FeaturedProducts.results.map(
             (result) => result.data
           ),
         });
       } else {
-        console.log("filter");
         this.setState({
           featuredProductsImg: FeaturedProducts.results
             .map((result) => result.data)
@@ -47,22 +53,21 @@ class ProducListComponent extends React.Component {
           <div>
             <h1>This is the Product List</h1>
           </div>
-          <GridComponent
-            featuredProductsImg={this.state.featuredProductsImg}
-          ></GridComponent>
-          <div className="pagination">
-            <ul>
-              {Array.from(Array(this.state.numberofPages).keys()).map(
-                (number) => {
-                  return (
-                    <li key={number}>
-                      <a>{number + 1}</a>
-                    </li>
-                  );
-                }
-              )}
-            </ul>
-          </div>
+          {this.state.loaded ? (
+            <React.Fragment>
+              <GridComponent
+                featuredProductsImg={this.state.featuredProductsImg}
+              ></GridComponent>
+              <GridPagination
+                numberofPages={this.state.numberofPages}
+              ></GridPagination>
+            </React.Fragment>
+          ) : (
+            <div>
+              <h2>Loading ...</h2>
+              <img src={loadingCircular}></img>
+            </div>
+          )}
         </div>
       </div>
     );
