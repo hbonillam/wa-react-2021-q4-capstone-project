@@ -6,6 +6,7 @@ import GridPagination from "./GridPagination";
 import loadingCircular from "../assets/images/loading-circular.gif";
 
 class ProducListComponent extends React.Component {
+  loadingTimeout;
   constructor(props) {
     super(props);
     this.state = {
@@ -18,9 +19,12 @@ class ProducListComponent extends React.Component {
     };
   }
   componentDidMount() {
-    setTimeout(() => {
+    this.loadingTimeout = setTimeout(() => {
       this.setState({ loaded: true });
     }, 2000);
+  }
+  componentWillUnmount() {
+    clearTimeout(this.loadingTimeout);
   }
 
   setCategories = (categories) => {
