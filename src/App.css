@@ -277,7 +277,7 @@ li {
   padding: 2px;
 }
 
-li a {
+li button {
   display: block;
   color: white;
   text-align: center;
@@ -285,6 +285,6 @@ li a {
   text-decoration: none;
 }
 
-li a:hover {
+li button:hover {
   background-color: cadetblue;
 }

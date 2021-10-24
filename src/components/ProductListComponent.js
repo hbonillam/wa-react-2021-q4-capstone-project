@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import SideBarComponent from "./SideBarComponent";
 import { FeaturedProducts } from "../mock/en-us/featured-products";
 import GridComponent from "./GridComponent";
@@ -69,7 +69,7 @@ class ProducListComponent extends React.Component {
           ) : (
             <div>
               <h2>Loading ...</h2>
-              <img src={loadingCircular}></img>
+              <img src={loadingCircular} alt="loading"></img>
             </div>
           )}
         </div>

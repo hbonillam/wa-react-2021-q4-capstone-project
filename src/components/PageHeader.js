@@ -4,9 +4,6 @@ import lupaLogo from "../assets/logos/lupa.png";
 import shoppingCartLogo from "../assets/images/shopping-cart.png";
 
 class PageHeader extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <div className="pageHeader">

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { ProductCategories } from "../mock/en-us/product-categories";
 
 class SidebarComponent extends React.Component {

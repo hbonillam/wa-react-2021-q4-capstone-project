@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 class GridPagination extends React.Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class GridPagination extends React.Component {
           {Array.from(Array(this.state.numberofPages).keys()).map((number) => {
             return (
               <li key={number}>
-                <a>{number + 1}</a>
+                <button>{number + 1}</button>
               </li>
             );
           })}
