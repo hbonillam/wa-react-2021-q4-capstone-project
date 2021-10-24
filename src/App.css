@@ -218,6 +218,9 @@ button {
 }
 @media only screen and (max-width: 800px) {
   /* For tablets: */
+  .grid-component {
+    justify-content: center;
+  }
   .gridcell-component {
     flex-basis: calc(40% - 44px);
   }
