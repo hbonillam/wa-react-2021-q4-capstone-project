@@ -216,6 +216,27 @@ button {
   box-sizing: border-box;
   margin: auto;
 }
+@media only screen and (max-width: 800px) {
+  /* For tablets: */
+  .gridcell-component {
+    flex-basis: calc(40% - 44px);
+  }
+  .top-menu {
+    padding-left: 100px;
+    float: none;
+    vertical-align: bottom;
+  }
+}
+@media only screen and (max-width: 700px) {
+  /* For tablets: */
+  .product-list {
+    display: block;
+  }
+  .gridcell-component {
+    flex-basis: calc(80% - 88px);
+  }
+}
+
 .product-list-container {
   display: table;
   box-sizing: border-box;
@@ -278,6 +299,8 @@ li {
 }
 
 li button {
+  border: 0px;
+  background-color: transparent;
   display: block;
   color: white;
   text-align: center;
