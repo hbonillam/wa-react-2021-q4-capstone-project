@@ -1,19 +1,18 @@
 import React from "react";
 import GridCell from "./GridCell";
 
-function CarouselComponent({ featuredProductsImg }) {
-  console.log(featuredProductsImg);
+function GridComponent({ featuredProductsImg }) {
   return (
     <div>
       <h2>Grid</h2>
 
       <div className="grid-component">
-        {featuredProductsImg.map((fp) => {
-          return <GridCell featuredProduct={fp}></GridCell>;
+        {featuredProductsImg.map((fp, i) => {
+          return <GridCell featuredProduct={fp} key={i}></GridCell>;
         })}
       </div>
     </div>
   );
 }
 
-export default CarouselComponent;
+export default GridComponent;
