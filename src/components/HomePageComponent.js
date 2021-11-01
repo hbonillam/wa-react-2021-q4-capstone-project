@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { FeaturedProducts } from "../mock/en-us/featured-products";
+import React from "react";
 import SliderComponent from "./SliderComponent";
 import CarouselComponent from "./CarouselComponent";
 import GridComponent from "./GridComponent";

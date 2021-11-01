@@ -1,6 +1,5 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
-import { useEffect, useState } from "react/cjs/react.development";
+import { useParams } from "react-router-dom";
 import { useProductSearch } from "../utils/hooks/useProductSearch";
 
 function SearchResultsPage() {

@@ -41,7 +41,7 @@ export function useProductSearch(searchTerm) {
     return () => {
       controller.abort();
     };
-  }, [apiRef, isApiMetadataLoading]);
+  }, [apiRef, isApiMetadataLoading, searchTerm]);
 
   return productSearch;
 }

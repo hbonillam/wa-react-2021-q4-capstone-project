@@ -7,43 +7,38 @@ import loadingCircular from "../assets/images/loading-circular.gif";
 import { useFeaturedProducts } from "../utils/hooks/useFeaturedProducts";
 
 function ProducListComponent() {
-  let loadingTimeout = null;
   const [categories, setCategories] = useState(new Set());
   const featuredProducts = useFeaturedProducts();
   const [featuredProductsImg, setFeaturedProductsImg] = useState([]);
-  const [numberofPages, setNumberofPages] = useState(5);
+  const [numberofPages] = useState(5);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    loadingTimeout = setTimeout(() => {
+    setTimeout(() => {
       setLoaded(true);
     }, 2000);
   }, []);
-  const setFeaturedProducts = function () {
-    if (!featuredProducts.isLoading) {
-      setFeaturedProductsImg(
-        featuredProducts.data.results?.map((result) => result)
-      );
-    }
-  };
+
   const updateCategories = (updatedCategories) => {
     setCategories(updatedCategories);
   };
   useEffect(() => {
     if (categories && categories.size === 0) {
-      setFeaturedProductsImg(
-        FeaturedProducts.results.map((result) => result.data)
-      );
+      setFeaturedProductsImg(FeaturedProducts.results.map((result) => result));
     } else {
       setFeaturedProductsImg(
         FeaturedProducts.results
-          .map((result) => result.data)
-          .filter((data) => categories.has(data.category.id))
+          .map((result) => result)
+          .filter((result) => categories.has(result.data.category.id))
       );
     }
   }, [categories]);
   useEffect(() => {
-    setFeaturedProducts();
+    if (!featuredProducts.isLoading) {
+      setFeaturedProductsImg(
+        featuredProducts.data.results?.map((result) => result)
+      );
+    }
   }, [featuredProducts]);
   return (
     <div className="product-list">

@@ -5,25 +5,25 @@ function CarouselComponent({ featuredProduct }) {
     <div className="gridcell-component">
       <div>
         <img
-          src={featuredProduct.data.mainimage.url}
+          src={featuredProduct.data?.mainimage.url}
           className="gridcell-image"
-          alt={featuredProduct.data.name}
+          alt={featuredProduct.data?.name}
         />
       </div>
       <div className="gridcell-data">
         <span>
           <b>Nombre: </b>
-          {featuredProduct.data.name}
+          {featuredProduct.data?.name}
         </span>
         <br />
         <span>
           <b>Categoria: </b>
-          {featuredProduct.data.category.slug}
+          {featuredProduct.data?.category.slug}
         </span>
         <br />
         <span>
           <b>Precio: </b>$
-          {featuredProduct.data.price.toLocaleString("en-US", {
+          {featuredProduct.data?.price.toLocaleString("en-US", {
             maximumFractionDigits: 2,
           })}
         </span>

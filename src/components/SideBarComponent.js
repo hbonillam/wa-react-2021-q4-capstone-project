@@ -6,13 +6,7 @@ function SidebarComponent(props) {
   const [selectedCategories, setSelectedCategories] = useState(new Set());
   const [productCategoriesData, setProductCategoriesData] = useState([]);
   const productCategories = useProductCategories();
-  const setProductCategories = function () {
-    if (!productCategories.isLoading) {
-      setProductCategoriesData(
-        productCategories.data.results?.map((result) => result)
-      );
-    }
-  };
+
   useEffect(() => {
     setProductCategoriesData(ProductCategories.results.map((result) => result));
   }, []);
@@ -24,18 +18,20 @@ function SidebarComponent(props) {
     newSelectedCategories.delete(id);
     setSelectedCategories(newSelectedCategories);
   };
-  const onSelectCategory = () => {
-    props.onSelectCategory(selectedCategories);
-  };
+
   const selectCategory = function (id) {
     if (new Set(selectedCategories).has(id)) removeCategory(id);
     else addCategory(id);
   };
   useEffect(() => {
-    onSelectCategory();
-  }, [selectedCategories]);
+    props.onSelectCategory(selectedCategories);
+  }, [selectedCategories, props]);
   useEffect(() => {
-    setProductCategories();
+    if (!productCategories.isLoading) {
+      setProductCategoriesData(
+        productCategories.data.results?.map((result) => result)
+      );
+    }
   }, [productCategories]);
 
   return (

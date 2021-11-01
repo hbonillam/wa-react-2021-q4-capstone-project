@@ -41,7 +41,7 @@ export function useProduct(productId) {
     return () => {
       controller.abort();
     };
-  }, [apiRef, isApiMetadataLoading]);
+  }, [apiRef, isApiMetadataLoading, productId]);
 
   return product;
 }
