@@ -5,7 +5,7 @@ import shoppingCartLogo from "../assets/images/shopping-cart.png";
 import { useState } from "react/cjs/react.development";
 
 function PageHeader() {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState(0);
   const textInputFunction = function (value) {
     const text = value.target.value.toLowerCase().trim();
     setSearchTerm(text);
