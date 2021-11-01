@@ -1,55 +1,53 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { ProductCategories } from "../mock/en-us/product-categories";
+import { useProductCategories } from "../utils/hooks/useProductCategories";
 
-class SidebarComponent extends React.Component {
-  productCategoriesData;
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedCategories: new Set(),
-    };
-    this.productCategoriesData = ProductCategories.results.map(
-      (result) => result
-    );
-  }
-  addCategory(id) {
-    this.setState(({ selectedCategories }) => ({
-      selectedCategories: new Set(selectedCategories).add(id),
-    }));
-  }
-  removeCategory(id) {
-    this.setState(({ selectedCategories }) => {
-      const newSelectedCategories = new Set(selectedCategories);
-      newSelectedCategories.delete(id);
-
-      return {
-        selectedCategories: newSelectedCategories,
-      };
-    });
-  }
-  onSelectCategory = () => {
-    this.props.onSelectCategory(this.state.selectedCategories);
-  };
-  selectCategory(id) {
-    if (new Set(this.state.selectedCategories).has(id)) this.removeCategory(id);
-    else this.addCategory(id);
-  }
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.selectedCategories !== prevState.selectedCategories) {
-      this.onSelectCategory();
+function SidebarComponent(props) {
+  const [selectedCategories, setSelectedCategories] = useState(new Set());
+  const [productCategoriesData, setProductCategoriesData] = useState([]);
+  const productCategories = useProductCategories();
+  const setProductCategories = function () {
+    if (!productCategories.isLoading) {
+      setProductCategoriesData(
+        productCategories.data.results?.map((result) => result)
+      );
     }
-  }
+  };
+  useEffect(() => {
+    setProductCategoriesData(ProductCategories.results.map((result) => result));
+  }, []);
+  const addCategory = function (id) {
+    setSelectedCategories(new Set(selectedCategories).add(id));
+  };
+  const removeCategory = function (id) {
+    const newSelectedCategories = new Set(selectedCategories);
+    newSelectedCategories.delete(id);
+    setSelectedCategories(newSelectedCategories);
+  };
+  const onSelectCategory = () => {
+    props.onSelectCategory(selectedCategories);
+  };
+  const selectCategory = function (id) {
+    if (new Set(selectedCategories).has(id)) removeCategory(id);
+    else addCategory(id);
+  };
+  useEffect(() => {
+    onSelectCategory();
+  }, [selectedCategories]);
+  useEffect(() => {
+    setProductCategories();
+  }, [productCategories]);
 
-  render() {
-    return (
-      <div className="sidebar">
-        <h1>SideBar</h1>
-        {this.productCategoriesData.map((result) => {
-          return this.state.selectedCategories.has(result.id) ? (
+  return (
+    <div className="sidebar">
+      <h1>SideBar</h1>
+      {productCategoriesData?.length > 0 &&
+        productCategoriesData.map((result) => {
+          return selectedCategories.has(result.id) ? (
             <div
               className="category selectedCategory"
               key={result.id}
-              onClick={() => this.selectCategory(result.id)}
+              onClick={() => selectCategory(result.id)}
             >
               <h2>{result.data.name}</h2>
             </div>
@@ -57,15 +55,14 @@ class SidebarComponent extends React.Component {
             <div
               className="category"
               key={result.id}
-              onClick={() => this.selectCategory(result.id)}
+              onClick={() => selectCategory(result.id)}
             >
               <h2>{result.data.name}</h2>
             </div>
           );
         })}
-      </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default SidebarComponent;

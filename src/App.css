@@ -284,7 +284,7 @@ button {
   color: white;
 }
 /*Pagination*/
-ul {
+.paginationList {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -296,12 +296,12 @@ ul {
   float: right;
 }
 
-li {
+.paginationList > li {
   float: left;
   padding: 2px;
 }
 
-li button {
+.paginationList > li button {
   border: 0px;
   background-color: transparent;
   display: block;
@@ -311,6 +311,6 @@ li button {
   text-decoration: none;
 }
 
-li button:hover {
+.paginationList > li button:hover {
   background-color: cadetblue;
 }
