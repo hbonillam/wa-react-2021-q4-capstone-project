@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SearchResultList from "./SearchResultList";
 import GridPagination from "./GridPagination";
 import { useParams } from "react-router-dom";
 import { useProductSearch } from "../utils/hooks/useProductSearch";
-import { useEffect } from "react/cjs/react.development";
 
 function SearchResultsPage() {
   const { searchTerm } = useParams();
