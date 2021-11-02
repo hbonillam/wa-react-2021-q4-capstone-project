@@ -56,7 +56,10 @@ function ProducListComponent() {
             <GridComponent
               featuredProductsImg={featuredProductsImg}
             ></GridComponent>
-            <GridPagination numberofPages={numberofPages}></GridPagination>
+            <GridPagination
+              numberofPages={numberofPages}
+              updateSelectedPage={() => {}}
+            ></GridPagination>
           </React.Fragment>
         ) : (
           <div>

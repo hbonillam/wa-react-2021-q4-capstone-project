@@ -1,17 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
+import { useEffect } from "react/cjs/react.development";
 
-function GridPagination() {
-  const numberofPages = 5;
+function GridPagination(props) {
+  const [selectedPage, setSelectedPage] = useState(1);
+  useEffect(() => {
+    props.updateSelectedPage(selectedPage);
+  }, [selectedPage, props]);
   return (
     <div className="pagination">
       <ul className="paginationList">
-        {Array.from(Array(numberofPages).keys()).map((number) => {
-          return (
-            <li key={number}>
-              <button>{number + 1}</button>
-            </li>
-          );
-        })}
+        {props.numberofPages &&
+          Array.from(Array(props.numberofPages).keys()).map((number) => {
+            return (
+              <li key={number}>
+                <button onClick={() => setSelectedPage(number + 1)}>
+                  {number + 1}
+                </button>
+              </li>
+            );
+          })}
       </ul>
     </div>
   );

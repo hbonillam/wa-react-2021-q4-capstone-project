@@ -314,3 +314,18 @@ button {
 .paginationList > li button:hover {
   background-color: cadetblue;
 }
+.search-result-list {
+  display: block;
+  margin: auto;
+  padding: 20px;
+}
+.search-result-item {
+  width: 25%;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  margin: auto;
+}
+.search-result-item-img {
+  width: 40%;
+}

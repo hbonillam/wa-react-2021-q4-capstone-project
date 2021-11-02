@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import pageLogo from "../assets/images/pngwing.com.png";
 import lupaLogo from "../assets/logos/lupa.png";
 import shoppingCartLogo from "../assets/images/shopping-cart.png";
-import { useState } from "react/cjs/react.development";
 
 function PageHeader() {
-  const [searchTerm, setSearchTerm] = useState(0);
+  const [searchTerm, setSearchTerm] = useState("");
   const textInputFunction = function (value) {
     const text = value.target.value.toLowerCase().trim();
     setSearchTerm(text);
