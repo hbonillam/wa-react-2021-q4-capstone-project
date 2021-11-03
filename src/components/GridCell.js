@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-function CarouselComponent({ featuredProduct }) {
+function GridCell({ featuredProduct }) {
   return (
     <div className="gridcell-component">
       <div>
@@ -43,4 +43,4 @@ function CarouselComponent({ featuredProduct }) {
   );
 }
 
-export default CarouselComponent;
+export default GridCell;
