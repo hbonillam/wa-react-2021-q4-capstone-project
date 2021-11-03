@@ -27,17 +27,19 @@ function SearchResultsPage() {
   //     }
   //   }, [response]);
   return (
-    <div>
+    <div className="search-result-page">
       <SearchResultList
         searchResults={results}
         searchTerm={searchTerm}
       ></SearchResultList>
-      <GridPagination
-        numberofPages={numberofPages}
-        updateSelectedPage={(updatedSelectedPage) => {
-          updateSelectedPage(updatedSelectedPage);
-        }}
-      ></GridPagination>
+      {results && results?.length > 0 && (
+        <GridPagination
+          numberofPages={numberofPages}
+          updateSelectedPage={(updatedSelectedPage) => {
+            updateSelectedPage(updatedSelectedPage);
+          }}
+        ></GridPagination>
+      )}
       {results && results?.length === 0 && (
         <h2>Sorry. No products match your search.</h2>
       )}

@@ -9,9 +9,9 @@ import { BrowserRouter, Route, Switch, NavLink } from "react-router-dom";
 
 function PageContent() {
   return (
-    <div className="page-content">
-      <BrowserRouter>
-        <PageHeader></PageHeader>
+    <BrowserRouter>
+      <PageHeader></PageHeader>
+      <div className="page-content">
         <Switch>
           <Route path="/home">
             <React.Fragment>
@@ -49,9 +49,9 @@ function PageContent() {
             </div>
           </Route>
         </Switch>
-        <PageFooter></PageFooter>
-      </BrowserRouter>
-    </div>
+      </div>
+      <PageFooter></PageFooter>
+    </BrowserRouter>
   );
 }
 
