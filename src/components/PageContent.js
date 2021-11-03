@@ -3,12 +3,15 @@ import HomePageComponent from "./HomePageComponent";
 import ProductListComponent from "./ProductListComponent";
 import ProductDetail from "./ProductDetail";
 import SearchResultsPage from "./SearchResultsPage";
+import PageHeader from "./PageHeader";
+import PageFooter from "./PageFooter";
 import { BrowserRouter, Route, Switch, NavLink } from "react-router-dom";
 
 function PageContent() {
   return (
     <div className="page-content">
       <BrowserRouter>
+        <PageHeader></PageHeader>
         <Switch>
           <Route path="/home">
             <React.Fragment>
@@ -46,6 +49,7 @@ function PageContent() {
             </div>
           </Route>
         </Switch>
+        <PageFooter></PageFooter>
       </BrowserRouter>
     </div>
   );

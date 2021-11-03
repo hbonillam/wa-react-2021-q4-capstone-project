@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 function CarouselComponent({ featuredProduct }) {
   return (
@@ -29,7 +30,13 @@ function CarouselComponent({ featuredProduct }) {
         </span>
         <hr />
         <button>Add to Cart</button>
-        <a href={`product/${featuredProduct.id}`}>See detail</a>
+        <NavLink
+          to={`product/${featuredProduct.id}`}
+          activeClassName="active-link"
+          exact
+        >
+          See detail
+        </NavLink>
         <br />
       </div>
     </div>
