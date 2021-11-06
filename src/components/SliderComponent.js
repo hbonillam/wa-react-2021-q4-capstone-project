@@ -13,24 +13,26 @@ function SliderComponent({ bannersImg }) {
   return (
     <div>
       <h2>Slider!</h2>
-      <div className="slideshow-container">
-        <button className="prev" onClick={prevSlide}>
-          &#10094;
-        </button>
-        <div className="mySlides">
-          <div className="numbertext">
-            {index + 1} / {bannersImg.length}
+      {bannersImg?.length > 0 && (
+        <div className="slideshow-container">
+          <button className="prev" onClick={prevSlide}>
+            &#10094;
+          </button>
+          <div className="mySlides">
+            <div className="numbertext">
+              {index + 1} / {bannersImg.length}
+            </div>
+            <img
+              src={bannersImg[index].main_image.url}
+              alt={bannersImg[index].main_image.alt}
+            />
+            <div className="text">{bannersImg[index].title}</div>
           </div>
-          <img
-            src={bannersImg[index].main_image.url}
-            alt={bannersImg[index].main_image.alt}
-          />
-          <div className="text">{bannersImg[index].title}</div>
+          <button className="next" onClick={nextSlide}>
+            &#10095;
+          </button>
         </div>
-        <button className="next" onClick={nextSlide}>
-          &#10095;
-        </button>
-      </div>
+      )}
     </div>
   );
 }

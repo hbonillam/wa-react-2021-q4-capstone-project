@@ -284,7 +284,7 @@ button {
   color: white;
 }
 /*Pagination*/
-ul {
+.paginationList {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -296,12 +296,12 @@ ul {
   float: right;
 }
 
-li {
+.paginationList > li {
   float: left;
   padding: 2px;
 }
 
-li button {
+.paginationList > li button {
   border: 0px;
   background-color: transparent;
   display: block;
@@ -311,6 +311,105 @@ li button {
   text-decoration: none;
 }
 
-li button:hover {
+.paginationList > li button:hover {
   background-color: cadetblue;
+}
+/*Search*/
+.search-result-page {
+  display: table;
+  box-sizing: border-box;
+  margin: auto;
+  padding: 10px;
+}
+.search-result-list {
+  display: block;
+  margin: auto;
+  padding: 20px;
+}
+.search-result-item {
+  width: 55%;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  margin: auto;
+}
+.search-result-item-img {
+  width: 40%;
+}
+/*Swiper*/
+.swiper-container {
+  width: 30%;
+  margin: auto;
+  padding: 20px;
+  border: slategray;
+  border-style: solid;
+  border-radius: 2%;
+}
+.swiper {
+  width: 100%;
+  height: 20%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper-slide {
+  background-size: cover;
+  background-position: center;
+}
+
+.mySwiper2 {
+  height: 80%;
+  width: 100%;
+}
+
+.mySwiper {
+  height: 20%;
+  box-sizing: border-box;
+  padding: 10px 0;
+}
+
+.mySwiper .swiper-slide {
+  width: 25%;
+  height: 100%;
+  opacity: 0.4;
+}
+
+.mySwiper .swiper-slide-thumb-active {
+  opacity: 1;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  color: #699187;
 }

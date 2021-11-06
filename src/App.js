@@ -1,7 +1,5 @@
 import React from "react";
-import PageHeader from "./components/PageHeader";
-import PageContent from "./components/PageContent.js";
-import PageFooter from "./components/PageFooter.js";
+import PageContent from "./components/PageContent";
 import "./App.css";
 class App extends React.Component {
   constructor(props) {
@@ -10,25 +8,11 @@ class App extends React.Component {
       navigationIndex: 0,
     };
   }
-  goToProductList() {
-    this.setState({ navigationIndex: 1 });
-    window.scrollTo(0, 0);
-  }
-  goToHomePage() {
-    this.setState({ navigationIndex: 0 });
-    window.scrollTo(0, 0);
-  }
+
   render() {
     return (
       <div className="App">
-        <PageHeader
-          prop_goToHomePage={this.goToHomePage.bind(this)}
-        ></PageHeader>
-        <PageContent
-          prop_navigationIndex={this.state.navigationIndex}
-          prop_goToProductList={this.goToProductList.bind(this)}
-        ></PageContent>
-        <PageFooter></PageFooter>
+        <PageContent></PageContent>
       </div>
     );
   }

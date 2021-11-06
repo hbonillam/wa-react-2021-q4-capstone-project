@@ -7,9 +7,10 @@ function GridComponent({ featuredProductsImg }) {
       <h2>Grid</h2>
 
       <div className="grid-component">
-        {featuredProductsImg.map((fp, i) => {
-          return <GridCell featuredProduct={fp} key={i}></GridCell>;
-        })}
+        {featuredProductsImg &&
+          featuredProductsImg.map((fp, i) => {
+            return <GridCell featuredProduct={fp} key={i}></GridCell>;
+          })}
       </div>
     </div>
   );
