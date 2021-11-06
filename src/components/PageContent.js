@@ -1,42 +1,58 @@
 import React from "react";
 import HomePageComponent from "./HomePageComponent";
 import ProductListComponent from "./ProductListComponent";
+import ProductDetail from "./ProductDetail";
+import SearchResultsPage from "./SearchResultsPage";
+import PageHeader from "./PageHeader";
+import PageFooter from "./PageFooter";
+import { BrowserRouter, Route, Switch, NavLink } from "react-router-dom";
 
-class PageContent extends React.Component {
-  navigationIndex;
-  constructor(props) {
-    super(props);
-    this.state = {
-      navigationIndex: props.prop_navigationIndex,
-    };
-  }
-  componentDidUpdate(prevProps) {
-    if (this.props.prop_navigationIndex !== prevProps.prop_navigationIndex) {
-      this.setState({ navigationIndex: this.props.prop_navigationIndex });
-    }
-  }
-  render() {
-    return (
+function PageContent() {
+  return (
+    <BrowserRouter>
+      <PageHeader></PageHeader>
       <div className="page-content">
-        {this.state.navigationIndex === 0 ? (
-          <React.Fragment>
-            <HomePageComponent></HomePageComponent>
+        <Switch>
+          <Route path="/home">
+            <React.Fragment>
+              <HomePageComponent></HomePageComponent>
+              <div>
+                <NavLink to="/products" activeClassName="active-link" exact>
+                  View all products
+                </NavLink>
+              </div>
+            </React.Fragment>
+          </Route>
+          <Route path="/products">
+            <ProductListComponent></ProductListComponent>
+          </Route>
+
+          <Route exact path="/">
+            <React.Fragment>
+              <HomePageComponent></HomePageComponent>
+              <div>
+                <NavLink to="/products" activeClassName="active-link" exact>
+                  View all products
+                </NavLink>
+              </div>
+            </React.Fragment>
+          </Route>
+          <Route path={`/product/:productId`}>
+            <ProductDetail />
+          </Route>
+          <Route path={`/searchResultsPage/:searchTerm`}>
+            <SearchResultsPage />
+          </Route>
+          <Route path="*">
             <div>
-              <button
-                className="form-input"
-                onClick={this.props.prop_goToProductList}
-              >
-                View all products
-              </button>
+              <h1>Not Found</h1>
             </div>
-          </React.Fragment>
-        ) : null}
-        {this.state.navigationIndex === 1 ? (
-          <ProductListComponent></ProductListComponent>
-        ) : null}
+          </Route>
+        </Switch>
       </div>
-    );
-  }
+      <PageFooter></PageFooter>
+    </BrowserRouter>
+  );
 }
 
 export default PageContent;

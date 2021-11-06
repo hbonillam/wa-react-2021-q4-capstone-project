@@ -1,26 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-class GridPagination extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      numberofPages: props.numberofPages,
-    };
-  }
-  render() {
-    return (
-      <div className="pagination">
-        <ul>
-          {Array.from(Array(this.state.numberofPages).keys()).map((number) => {
+function GridPagination(props) {
+  const [selectedPage, setSelectedPage] = useState(1);
+  useEffect(() => {
+    props.updateSelectedPage(selectedPage);
+  }, [selectedPage, props]);
+  return (
+    <div className="pagination">
+      <ul className="paginationList">
+        {props.numberofPages &&
+          Array.from(Array(props.numberofPages).keys()).map((number) => {
             return (
               <li key={number}>
-                <button>{number + 1}</button>
+                <button onClick={() => setSelectedPage(number + 1)}>
+                  {number + 1}
+                </button>
               </li>
             );
           })}
-        </ul>
-      </div>
-    );
-  }
+      </ul>
+    </div>
+  );
 }
 export default GridPagination;
