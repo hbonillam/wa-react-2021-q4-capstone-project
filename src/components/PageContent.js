@@ -3,8 +3,10 @@ import HomePageComponent from "./HomePageComponent";
 import ProductListComponent from "./ProductListComponent";
 import ProductDetail from "./ProductDetail";
 import SearchResultsPage from "./SearchResultsPage";
+import Cart from "./cart/Cart";
 import PageHeader from "./PageHeader";
 import PageFooter from "./PageFooter";
+import Checkout from "./checkout/Checkout";
 import { BrowserRouter, Route, Switch, NavLink } from "react-router-dom";
 
 function PageContent() {
@@ -42,6 +44,12 @@ function PageContent() {
           </Route>
           <Route path={`/searchResultsPage/:searchTerm`}>
             <SearchResultsPage />
+          </Route>
+          <Route path={`/cart`}>
+            <Cart />
+          </Route>
+          <Route path={`/checkout`}>
+            <Checkout />
           </Route>
           <Route path="*">
             <div>
