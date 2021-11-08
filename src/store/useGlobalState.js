@@ -15,7 +15,6 @@ const useGlobalStore = () => {
             .map((value) => value.producto.id)
             .includes(payload.value.producto.id)
         ) {
-          console.log("repetido");
           payload.value = [
             ...state.value.map((value) => {
               if (value.producto.id === payload.value.producto.id) {
@@ -25,9 +24,9 @@ const useGlobalStore = () => {
             }),
           ];
         } else {
-          console.log("nuevo");
           payload.value = [...state.value, payload.value];
         }
+        alert("Product Added!");
         return setState(payload);
       case "updateQuantity":
         payload.value = [
@@ -45,6 +44,7 @@ const useGlobalStore = () => {
             (value) => value.producto.id !== payload.value.id
           ),
         ];
+        alert("Product Removed!");
         return setState(payload);
       default:
         return state;

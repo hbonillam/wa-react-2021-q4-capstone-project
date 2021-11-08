@@ -31,25 +31,25 @@ function Checkout() {
             <tr>
               <td>Name: </td>
               <td>
-                <input type="text" />
+                <input type="text" className="table-details-input" />
               </td>
             </tr>
             <tr>
               <td>E-mail: </td>
               <td>
-                <input type="text" />
+                <input type="text" className="table-details-input" />
               </td>
             </tr>
             <tr>
               <td>Post/Zip Code: </td>
               <td>
-                <input type="text" />
+                <input type="text" className="table-details-input" />
               </td>
             </tr>
             <tr>
               <td>Order Notes: </td>
               <td>
-                <textarea />
+                <textarea className="table-details-textarea" />
               </td>
             </tr>
           </tbody>

@@ -28,9 +28,9 @@ function PageHeader() {
                 className="logo--md inverted-color"
                 alt="shopping-cart-logo"
               ></img>
-              <span className="cart-size">
-                {state.value.length > 0 && state.value.length}
-              </span>
+              {state.value.length > 0 && (
+                <span className="cart-size">{state.value.length}</span>
+              )}
             </div>
           </NavLink>
         </div>

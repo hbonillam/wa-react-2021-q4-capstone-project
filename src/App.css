@@ -513,3 +513,13 @@ input.form-input[type="number"] {
   margin: auto;
   padding: 5px;
 }
+/*Checkout*/
+.table-details-input {
+  width: 90%;
+  font-size: 16px;
+}
+.table-details-textarea {
+  width: 90%;
+  height: 90px;
+  font-size: 16px;
+}
