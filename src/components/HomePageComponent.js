@@ -15,6 +15,7 @@ function HomePageComponent() {
   const featuredProducts = useFeaturedProducts();
   const setBanners = function () {
     if (!featuredBanners.isLoading) {
+      //console.log(featuredBanners);
       bannersImg = featuredBanners.data.results?.map((result) => result.data);
     }
   };

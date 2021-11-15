@@ -3,7 +3,7 @@ import { API_BASE_URL } from "../constants";
 import { useLatestAPI } from "./useLatestAPI.js";
 
 export function useProductSearch(searchTerm, page = 0) {
-  console.log(searchTerm, typeof page);
+  //console.log(searchTerm, typeof page);
   const { ref: apiRef, isLoading: isApiMetadataLoading } = useLatestAPI();
   const [productSearch, setProductSearch] = useState(() => ({
     data: {},

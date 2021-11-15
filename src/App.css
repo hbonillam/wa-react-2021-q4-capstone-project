@@ -119,7 +119,12 @@ button {
 }
 
 /*Slider Component*/
-
+.slider-img {
+  max-width: 100%;
+}
+.no-show {
+  display: none;
+}
 .slideshow-container {
   max-width: 1000px;
   position: relative;
