@@ -1,27 +1,46 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import Context from "../store/context";
 import { useParams } from "react-router-dom";
 import { useProduct } from "../utils/hooks/useProduct";
 import ImageSwiper from "./ImageSwiper.jsx";
 
 function ProductDetail() {
+  const { state, actions } = useContext(Context);
   const { productId } = useParams();
   const response = useProduct(productId);
   const [product, setProduct] = useState(null);
+  const [cantidad, setCantidad] = useState(1);
   useEffect(() => {
     if (!response.isLoading && response?.data?.results?.length > 0) {
       setProduct(response.data.results[0]);
     }
   }, [response]);
-  console.log(product);
+  useEffect(() => {
+    const listaItem = state.value?.filter(
+      (item) => item.producto.id === product?.id
+    );
+    if (listaItem.length > 0) {
+      setCantidad(parseInt(listaItem[0].cantidad));
+    }
+  }, [product, state.value]);
+  const addProductToCart = function (product) {
+    console.log("anadiendo");
+    actions({ type: "addProduct", payload: { ...state, value: product } });
+  };
   return (
-    <div>
+    <div className="product-detail">
       {product && (
         <div>
           <div className="swiper-container">
             <ImageSwiper images={product.data.images}></ImageSwiper>
           </div>
-          <table>
+          <table className="details-table">
             <thead>
+              <tr>
+                <th colSpan="2">Details</th>
+              </tr>
+            </thead>
+            <tbody>
               <tr>
                 <td>
                   <b>Nombre: </b>
@@ -30,8 +49,6 @@ function ProductDetail() {
                   <span>{product.data.name}</span>
                 </td>
               </tr>
-            </thead>
-            <tbody>
               <tr>
                 <td>
                   <b>Precio: </b>
@@ -90,10 +107,29 @@ function ProductDetail() {
             </tbody>
           </table>
           <div>
-            <input type="number" min="1" max="10"></input>
-            <button>Add to cart!</button>
+            <input
+              type="number"
+              min="1"
+              max={product.data.stock}
+              defaultValue={cantidad}
+              key={cantidad}
+              onChange={(e) => {
+                setCantidad(e.target.value);
+              }}
+              disabled={product.data.stock === 0}
+              className="form-input"
+            ></input>
+            <button
+              className="form-input-button"
+              onClick={() => {
+                addProductToCart({ producto: product, cantidad: cantidad });
+              }}
+              disabled={product.data.stock === 0}
+            >
+              Add to cart!
+            </button>
           </div>
-          <table>
+          <table className="details-table">
             <thead>
               <tr>
                 <th colSpan="2">Specs</th>

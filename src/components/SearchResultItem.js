@@ -28,7 +28,7 @@ function SearchResultItem({ product }) {
           })}
         </span>
         <hr />
-        <button>Add to Cart</button>
+        <button className="green-button">Add to Cart</button>
         <br />
       </div>
     </div>

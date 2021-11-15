@@ -19,7 +19,7 @@ function ImageSwiper(props) {
   useEffect(() => {
     setImages(props.images);
   }, [props]);
-  console.log(images);
+  //console.log(images);
   return (
     <>
       <Swiper
@@ -37,10 +37,9 @@ function ImageSwiper(props) {
           images?.length > 0 &&
           images.map((image, indice) => {
             return (
-              <SwiperSlide>
+              <SwiperSlide key={indice}>
                 <img
                   src={image.image.url}
-                  key={indice}
                   alt={image.image.alt ? image.image.alt : indice}
                 />
               </SwiperSlide>
@@ -60,10 +59,9 @@ function ImageSwiper(props) {
           images?.length > 0 &&
           images.map((image, indice) => {
             return (
-              <SwiperSlide>
+              <SwiperSlide key={indice}>
                 <img
                   src={image.image.url}
-                  key={indice}
                   alt={image.image.alt ? image.image.alt : indice}
                 />
               </SwiperSlide>

@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import Context from "../store/context";
 import pageLogo from "../assets/images/pngwing.com.png";
 import lupaLogo from "../assets/logos/lupa.png";
 import shoppingCartLogo from "../assets/images/shopping-cart.png";
 import { NavLink } from "react-router-dom";
 
 function PageHeader() {
+  const { state } = useContext(Context);
   const [searchTerm, setSearchTerm] = useState("");
   const textInputFunction = function (value) {
     const text = value.target.value.toLowerCase().trim();
@@ -19,13 +21,18 @@ function PageHeader() {
       </div>
       <div className="top-menu">
         <div className="menu-elements">
-          <div className="menu-element">
-            <img
-              src={shoppingCartLogo}
-              className="logo--md inverted-color"
-              alt="shopping-cart-logo"
-            ></img>
-          </div>
+          <NavLink to="/cart" exact className="no-decoration">
+            <div className="menu-element">
+              <img
+                src={shoppingCartLogo}
+                className="logo--md inverted-color"
+                alt="shopping-cart-logo"
+              ></img>
+              {state.value.length > 0 && (
+                <span className="cart-size">{state.value.length}</span>
+              )}
+            </div>
+          </NavLink>
         </div>
         <div className="search-bar">
           <input
