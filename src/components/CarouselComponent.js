@@ -13,22 +13,26 @@ function CarouselComponent({ productCategoriesImg }) {
     <div>
       <h2>Carousel</h2>
       <button onClick={() => nextSlide()}> See next </button>
-      <div className="slideshow-container carousel-container">
-        {productCategoriesImg.map((pc, i) => {
-          return i === index ? (
-            <div className="mySlides fade" key={i + 1}>
-              <div className="numbertext">{i + 1} / 5</div>
-              <img src={pc.main_image.url} alt={pc.main_image.alt} />
-              <div className="text">{pc.name}</div>
-            </div>
-          ) : (
-            <div className="mySlides fade hidden" key={i + 1}>
-              <div className="numbertext">{i + 1} / 5</div>
-              <img src={pc.main_image.url} alt={pc.main_image.alt} />
-              <div className="text">{pc.name}</div>
-            </div>
-          );
-        })}
+      <div
+        className="slideshow-container carousel-container"
+        data-testid="carousel"
+      >
+        {productCategoriesImg &&
+          productCategoriesImg.map((pc, i) => {
+            return i === index ? (
+              <div className="mySlides fade" key={i + 1}>
+                <div className="numbertext">{i + 1} / 5</div>
+                <img src={pc.main_image.url} alt={pc.main_image.alt} />
+                <div className="text">{pc.name}</div>
+              </div>
+            ) : (
+              <div className="mySlides fade hidden" key={i + 1}>
+                <div className="numbertext">{i + 1} / 5</div>
+                <img src={pc.main_image.url} alt={pc.main_image.alt} />
+                <div className="text">{pc.name}</div>
+              </div>
+            );
+          })}
       </div>
     </div>
   );

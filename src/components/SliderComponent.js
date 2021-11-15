@@ -22,11 +22,29 @@ function SliderComponent({ bannersImg }) {
             <div className="numbertext">
               {index + 1} / {bannersImg.length}
             </div>
-            <img
-              src={bannersImg[index].main_image.url}
-              alt={bannersImg[index].main_image.alt}
-            />
-            <div className="text">{bannersImg[index].title}</div>
+            <div data-testid="slider">
+              {bannersImg.map((bi, i) => {
+                return i === index ? (
+                  <React.Fragment key={i}>
+                    <img
+                      className="slider-img"
+                      src={bi.main_image.url}
+                      alt={bi.main_image.alt}
+                    />
+                    <div className="text">{bannersImg[index].title}</div>
+                  </React.Fragment>
+                ) : (
+                  <React.Fragment key={i}>
+                    <img
+                      className="no-show"
+                      src={bi.main_image.url}
+                      alt={bi.main_image.alt}
+                    />
+                    <div className="text no-show">{bi.title}</div>
+                  </React.Fragment>
+                );
+              })}
+            </div>
           </div>
           <button className="next" onClick={nextSlide}>
             &#10095;
